@@ -110,15 +110,4 @@ public class SmtpClient implements ISmtpClient {
         socket.close();
     }
 
-    public boolean connect(){
-        return false;
-    }
-
-    public boolean disconnect(){
-        return false;
-    }
-
-    public void sendMail(){
-
-    }
 }

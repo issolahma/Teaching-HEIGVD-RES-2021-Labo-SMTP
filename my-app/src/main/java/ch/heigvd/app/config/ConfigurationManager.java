@@ -99,4 +99,12 @@ public class ConfigurationManager implements IConfigurationManager {
     public List<Person> getWitnessesToCC(){
         return witnessesToCC;
     }
+
+    public String getSmtpServerAddress() {
+        return smtpServerAddress;
+    }
+
+    public int getSmtpServerPort() {
+        return smtpServerPort;
+    }
 }
