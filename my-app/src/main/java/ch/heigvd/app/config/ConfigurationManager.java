@@ -69,6 +69,9 @@ public class ConfigurationManager implements IConfigurationManager {
                     StringBuilder body = new StringBuilder();
                     while ((line != null) && (!line.equals("=="))){
                         body.append(line);
+                        if (line.split(":")[0].equals("Subject")) {
+                            body.append("\r\n");
+                        }
                         body.append("\r\n");
                         line = reader.readLine();
                     }

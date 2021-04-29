@@ -55,29 +55,29 @@ public class SmtpClient implements ISmtpClient {
             LOG.info(line);
         }
 
-        for(String cc : message.getCc()){
-            writer.write("RCPT TO:");
-            writer.write(cc);
-            writer.write("\r\n");
-            writer.flush();
-            line = reader.readLine();
-            LOG.info(line);
+        if (message.getCc().length != 0) {
+            for (String cc : message.getCc()) {
+                writer.write("RCPT TO:");
+                writer.write(cc);
+                writer.write("\r\n");
+                writer.flush();
+                line = reader.readLine();
+                LOG.info(line);
+            }
         }
 
-        for(String bcc : message.getBcc()){
-            writer.write("RCPT TO:");
-            writer.write(bcc);
-            writer.write("\r\n");
-            writer.flush();
-            line = reader.readLine();
-            LOG.info(line);
+        if (message.getBcc().length != 0) {
+            for (String bcc : message.getBcc()) {
+                writer.write("RCPT TO:");
+                writer.write(bcc);
+                writer.write("\r\n");
+                writer.flush();
+                line = reader.readLine();
+                LOG.info(line);
+            }
         }
 
         writer.write("DATA");
-        writer.write("\r\n");
-        writer.flush();
-        line = reader.readLine();
-        LOG.info(line);
         writer.write("Content-Type: text/plain: charset=\"utf-8\"\r\n");
         writer.write("From: " + message.getFrom() + "\r\n");
 
@@ -86,14 +86,17 @@ public class SmtpClient implements ISmtpClient {
             writer.write(", " + message.getTo()[i]);
         }
         writer.write("\r\n");
-
-        writer.write("Cc: " + message.getCc()[0]);
-        for(int i=1; i < message.getCc().length; ++i){
-            writer.write(", " + message.getCc()[i]);
-        }
-        writer.write("\r\n");
-
         writer.flush();
+
+        if(message.getCc().length != 0) {
+            writer.write("Cc: " + message.getCc()[0]);
+            for (int i = 1; i < message.getCc().length; ++i) {
+                writer.write(", " + message.getCc()[i]);
+            }
+            writer.write("\r\n");
+
+            writer.flush();
+        }
 
         LOG.info(message.getBody());
         writer.write(message.getBody());

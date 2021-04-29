@@ -49,6 +49,14 @@ public class Prank {
     public Message generateMailMessage(){
         Message msg = new Message();
 
+/*        String subject = this.message.split("\r\n")[0].split(":")[1];
+        msg.setSubject(subject);
+
+        String[] lines = this.message.split("\r\n");
+        String m = "";
+        for (int i = 1; i< lines.length; ++i){
+            m += lines[i] + "\r\n";
+        }*/
         msg.setBody(this.message + "\r\n" + victimSender.getFirstname());
 
         String[] to = victimRecipients
