@@ -12,7 +12,8 @@ public class Prank {
     private Person victimSender;
     private final List<Person> victimRecipients = new ArrayList<>();
     private final List<Person> witnessRecipients = new ArrayList<>();
-    private String message;
+    private String body;
+    private Message msg;
 
     public Person getVictimSender() {
         return victimSender;
@@ -23,11 +24,11 @@ public class Prank {
     }
 
     public String getMessage() {
-        return message;
+        return body;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.body = message;
     }
 
     public void addVictimRecipient(List<Person> victims){
@@ -47,7 +48,7 @@ public class Prank {
     }
 
     public Message generateMailMessage(){
-        Message msg = new Message();
+        msg = new Message();
 
 /*        String subject = this.message.split("\r\n")[0].split(":")[1];
         msg.setSubject(subject);
@@ -57,7 +58,7 @@ public class Prank {
         for (int i = 1; i< lines.length; ++i){
             m += lines[i] + "\r\n";
         }*/
-        msg.setBody(this.message + "\r\n" + victimSender.getFirstname());
+        msg.setBody(this.body + "\r\n" + victimSender.getFirstname());
 
         String[] to = victimRecipients
                 .stream()
