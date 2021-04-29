@@ -13,12 +13,14 @@ import java.util.logging.Logger;
 public class PrankGenerator {
     private IConfigurationManager configurationManager;
 
+    private List<Prank> pranks;
+
     public PrankGenerator(IConfigurationManager configurationManager){
         this.configurationManager = configurationManager;
     }
 
     public List<Prank> generatePranks(){
-        List<Prank> pranks = new ArrayList<>();
+        pranks = new ArrayList<>();
 
         List<String> messages = configurationManager.getMessages();
         int messageIndex = 0;
