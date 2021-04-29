@@ -14,7 +14,7 @@ import java.util.List;
  *
  *
  */
-public class App 
+public class Client_SMTP_Prank
 {
     /**
      *
