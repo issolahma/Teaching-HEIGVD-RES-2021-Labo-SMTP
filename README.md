@@ -86,7 +86,7 @@ java -jar target/client_smtp_prank-1.0-SNAPSHOT.jar
 
 UML
 
-![](figures\UML.svg)
+![](figures/UML.svg)
 
 
 
