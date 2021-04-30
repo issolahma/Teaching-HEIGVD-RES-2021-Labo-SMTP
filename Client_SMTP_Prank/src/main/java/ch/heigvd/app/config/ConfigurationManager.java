@@ -29,12 +29,19 @@ public class ConfigurationManager implements IConfigurationManager {
         FileInputStream fis = new FileInputStream(filename);
         Properties properties = new Properties();
         properties.load(fis);
+
+        if(properties.getProperty("smtpServerAddress") == null || properties.getProperty("smtpServerPort") == null
+                || properties.getProperty("numberOfGroups") == null || properties.getProperty("witnessesToCC") == null)
+            throw new IOException("Error : Config.properties File wrong format");
+
         this.smtpServerAddress = properties.getProperty("smtpServerAddress");
         this.smtpServerPort = Integer.parseInt(properties.getProperty("smtpServerPort"));
         this.numberOfGroups = Integer.parseInt(properties.getProperty("numberOfGroups"));
 
         this.witnessesToCC = new ArrayList<>();
         String witnesses = properties.getProperty("witnessesToCC");
+        if(!witnesses.contains("@"))
+            throw new IOException("Error : Config.properties witnessesToCC Wrong Format");
         String[] witnessesAddresses = witnesses.split(".");
         for (String address : witnessesAddresses){
             this.witnessesToCC.add(new Person(address));
