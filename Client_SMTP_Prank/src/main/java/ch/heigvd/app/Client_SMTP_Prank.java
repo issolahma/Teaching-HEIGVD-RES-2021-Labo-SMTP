@@ -21,16 +21,20 @@ public class Client_SMTP_Prank
      * @param args (fichier mails) (fichier messages)
      */
     public static void main( String[] args ) throws IOException {
-        ConfigurationManager conf = new ConfigurationManager();
-        PrankGenerator pg = new PrankGenerator(conf);
-        List<Prank> prankList = pg.generatePranks();
+        try {
+            ConfigurationManager conf = new ConfigurationManager();
+            PrankGenerator pg = new PrankGenerator(conf);
+            List<Prank> prankList = pg.generatePranks();
 
-        SmtpClient cli = new SmtpClient(conf.getSmtpServerAddress(), conf.getSmtpServerPort());
+            SmtpClient cli = new SmtpClient(conf.getSmtpServerAddress(), conf.getSmtpServerPort());
 
-        for (Prank p : prankList){
-            cli.sendMessage(p.generateMailMessage());
+            for (Prank p : prankList) {
+                cli.sendMessage(p.generateMailMessage());
+            }
+        }catch (Exception e)
+        {
+            System.out.println("Error : " + e.getMessage());
         }
-
     }
 
 

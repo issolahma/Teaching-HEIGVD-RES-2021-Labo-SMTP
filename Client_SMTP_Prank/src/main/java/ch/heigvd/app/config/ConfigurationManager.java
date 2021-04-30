@@ -50,6 +50,8 @@ public class ConfigurationManager implements IConfigurationManager {
                 result = new ArrayList<>();
                 String address = reader.readLine();
                 while (address != null){
+                    if(!address.contains("@"))
+                        throw new IOException("Error : victim config file wrong format");
                     result.add(new Person(address));
                     address = reader.readLine();
                 }
@@ -65,16 +67,20 @@ public class ConfigurationManager implements IConfigurationManager {
             try (BufferedReader reader = new BufferedReader(isr)){
                 result = new ArrayList<>();
                 String line = reader.readLine();
+                boolean subject = false;
                 while (line != null){
                     StringBuilder body = new StringBuilder();
                     while ((line != null) && (!line.equals("=="))){
                         body.append(line);
                         if (line.split(":")[0].equals("Subject")) {
+                            subject = true;
                             body.append("\r\n");
                         }
                         body.append("\r\n");
                         line = reader.readLine();
                     }
+                    if (subject == false)
+                        body.insert(0,"\r\n");
                     result.add(body.toString());
                     line = reader.readLine();
                 }
