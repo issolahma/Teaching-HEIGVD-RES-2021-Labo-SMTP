@@ -170,7 +170,8 @@ Nous avons choisis d'envoyer les messages ainsi que les sujets encodé en Base64
 
   Nous pouvons voir que le contenu ainsi que le sujet sont bien encodé en base 64.
 
-<img src="figures\raw-output.png" alt="raw" style="zoom:67%;" />
+
+![raw](figures\raw-output.png){:height="50%" width="50%"}
 
 
 
