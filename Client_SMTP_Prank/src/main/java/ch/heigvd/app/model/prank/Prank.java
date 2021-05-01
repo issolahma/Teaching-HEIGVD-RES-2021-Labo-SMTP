@@ -15,7 +15,7 @@ public class Prank {
     private Person victimSender;
     private final List<Person> victimRecipients = new ArrayList<>();
     private final List<Person> witnessRecipients = new ArrayList<>();
-    private String message;
+    private String body;
     private Message msg;
 
     public Person getVictimSender() {
@@ -27,11 +27,11 @@ public class Prank {
     }
 
     public String getMessage() {
-        return message;
+        return body;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.body = message;
     }
 
     public void addVictimRecipient(List<Person> victims){
@@ -51,17 +51,17 @@ public class Prank {
     }
 
     /**
-     * Generate a Message from string message
+     * Generate a Message from the body
      * @return
      */
     public Message generateMailMessage(){
         msg = new Message();
 
-        String []splitMsg = this.message.split("\r\n");
+        String []splitMsg = this.body.split("\r\n");
         msg.setSubject(splitMsg[0].split(":")[1] + "\r\n");
 
 
-        String body = this.message.replace(splitMsg[0] + "\r\n", "");
+        String body = this.body.replace(splitMsg[0] + "\r\n", "");
         msg.setBody(body + "\r\n" + victimSender.getFirstname());
 
         String[] to = victimRecipients
