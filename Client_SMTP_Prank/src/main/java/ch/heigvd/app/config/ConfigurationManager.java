@@ -2,10 +2,7 @@ package ch.heigvd.app.config;
 
 import ch.heigvd.app.model.mail.Person;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +23,7 @@ public class ConfigurationManager implements IConfigurationManager {
     }
 
     private void loadProperties(String filename) throws IOException {
-        FileInputStream fis = new FileInputStream(filename);
+        BufferedInputStream fis = new BufferedInputStream(new FileInputStream(filename));
         Properties properties = new Properties();
         properties.load(fis);
 
@@ -51,7 +48,7 @@ public class ConfigurationManager implements IConfigurationManager {
 
     private List<Person> loadAddressesFromFile(String filename) throws IOException {
         List<Person> result;
-        try (FileInputStream fis = new FileInputStream(filename)){
+        try (BufferedInputStream fis = new BufferedInputStream(new FileInputStream(filename));){
             InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
             try (BufferedReader reader = new BufferedReader(isr)){
                 result = new ArrayList<>();
@@ -69,7 +66,7 @@ public class ConfigurationManager implements IConfigurationManager {
 
     private List<String> loadMessagesFromFile(String filename) throws IOException {
         List<String> result;
-        try (FileInputStream fis = new FileInputStream(filename)){
+        try (BufferedInputStream fis = new BufferedInputStream(new FileInputStream(filename));){
             InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
             try (BufferedReader reader = new BufferedReader(isr)){
                 result = new ArrayList<>();
