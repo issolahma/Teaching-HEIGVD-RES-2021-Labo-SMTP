@@ -188,4 +188,4 @@ Nous avons choisis d'envoyer les messages ainsi que les sujets encodé en Base64
 
   Sur cette vue nous pouvons constater qu'il y a une personne en copie cachée.
 
-  <img src="figures\wireshark.png" width="50%" />
+  <img src="figures/wireshark.png" width="50%" />
