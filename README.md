@@ -170,8 +170,9 @@ Nous avons choisis d'envoyer les messages ainsi que les sujets encodé en Base64
 
   Nous pouvons voir que le contenu ainsi que le sujet sont bien encodé en base 64.
 
-
 <img src="figures/raw-output.png" width="60%" />
+
+
 
 
 - Mail reçu par le serveur MockMock.
@@ -183,8 +184,8 @@ Nous avons choisis d'envoyer les messages ainsi que les sujets encodé en Base64
 
 
 
+* Flux TCP vu par Wireshark
 
+  Sur cette vue nous pouvons constater qu'il y a une personne en copie cachée.
 
-* 
-* 
-* **A description of your implementation**: document the key aspects of your code. It is probably a good idea to start with a class diagram. Decide which classes you want to show (focus on the important ones) and describe their responsibilities in text. It is also certainly a good idea to include examples of dialogues between your client and an SMTP server (maybe you also want to include some screenshots here).
+  <img src="figures/wireshark.png" width="50%" />
