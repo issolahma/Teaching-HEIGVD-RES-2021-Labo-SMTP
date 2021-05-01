@@ -4,6 +4,8 @@ import ch.heigvd.app.model.mail.Message;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.logging.Logger;
 
 public class SmtpClient implements ISmtpClient {
@@ -78,7 +80,6 @@ public class SmtpClient implements ISmtpClient {
         }
 
         writer.write("DATA");
-        writer.write("Content-Type: text/plain: charset=\"utf-8\"\r\n");
         writer.write("From: " + message.getFrom() + "\r\n");
 
         writer.write("To: " + message.getTo()[0]);
@@ -98,8 +99,15 @@ public class SmtpClient implements ISmtpClient {
             writer.flush();
         }
 
+        writer.write("Content-Type: text/plain; charset=UTF-8\r\n");
+        writer.write("Content-Transfer-Encoding: base64\r\n");
+
+        LOG.info(message.getSubject());
+        writer.write("Subject: =?UTF-8?B?" + Base64.getEncoder().encodeToString(message.getSubject().getBytes(StandardCharsets.UTF_8)) + "?=");
+        writer.write("\r\n");
+        writer.write("\r\n");
         LOG.info(message.getBody());
-        writer.write(message.getBody());
+        writer.write(Base64.getEncoder().encodeToString(message.getBody().getBytes(StandardCharsets.UTF_8)));
         writer.write("\r\n");
         writer.write(".");
         writer.write("\r\n");

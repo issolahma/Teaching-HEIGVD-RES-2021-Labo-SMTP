@@ -5,14 +5,13 @@ import ch.heigvd.app.model.mail.Person;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Prank {
     private Person victimSender;
     private final List<Person> victimRecipients = new ArrayList<>();
     private final List<Person> witnessRecipients = new ArrayList<>();
-    private String body;
+    private String message;
     private Message msg;
 
     public Person getVictimSender() {
@@ -24,11 +23,11 @@ public class Prank {
     }
 
     public String getMessage() {
-        return body;
+        return message;
     }
 
     public void setMessage(String message) {
-        this.body = message;
+        this.message = message;
     }
 
     public void addVictimRecipient(List<Person> victims){
@@ -50,15 +49,12 @@ public class Prank {
     public Message generateMailMessage(){
         msg = new Message();
 
-/*        String subject = this.message.split("\r\n")[0].split(":")[1];
-        msg.setSubject(subject);
+        String []splitMsg = this.message.split("\r\n");
+        msg.setSubject(splitMsg[0].split(":")[1] + "\r\n");
 
-        String[] lines = this.message.split("\r\n");
-        String m = "";
-        for (int i = 1; i< lines.length; ++i){
-            m += lines[i] + "\r\n";
-        }*/
-        msg.setBody(this.body + "\r\n" + victimSender.getFirstname());
+
+        String body = this.message.replace(splitMsg[0] + "\r\n", "");
+        msg.setBody(body + "\r\n" + victimSender.getFirstname());
 
         String[] to = victimRecipients
                 .stream()
@@ -67,12 +63,12 @@ public class Prank {
                 .toArray(new String[]{});
         msg.setTo(to);
 
-        String[] cc = witnessRecipients
+        String[] bcc = witnessRecipients
                 .stream()
                 .map(p -> p.getAddress())
                 .collect(Collectors.toList())
                 .toArray(new String[]{});
-        msg.setCc(cc);
+        msg.setBcc(bcc);
 
         msg.setFrom(victimSender.getAddress());
 

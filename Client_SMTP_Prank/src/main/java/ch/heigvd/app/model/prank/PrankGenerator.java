@@ -28,7 +28,10 @@ public class PrankGenerator {
         int numberOfGroups = configurationManager.getNumberOfGroups();
         int numberOfVictims = configurationManager.getVictims().size();
 
-        // num min?
+        if (numberOfVictims / numberOfGroups < 3){
+            numberOfGroups = numberOfVictims / 3;
+            LOG.warning("There are not enough victims to generate the desires number of groups to have at least 3 victims per group.");
+        }
 
         List<Group> groups = generateGroups(configurationManager.getVictims(), numberOfGroups);
         for (Group group : groups){
