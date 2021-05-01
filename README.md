@@ -171,15 +171,15 @@ Nous avons choisis d'envoyer les messages ainsi que les sujets encodé en Base64
   Nous pouvons voir que le contenu ainsi que le sujet sont bien encodé en base 64.
 
 
-![raw](figures\raw-output.png){:height="50%" width="50%"}
-
+<img src="figures/raw-output.png" width="50%" />
 
 
 - Mail reçu par le serveur MockMock.
 
   Nous permet de vérifier que le contenu est bien décodé, et que les accent sont pris en compte correctement.
 
-<img src="figures\mail.png" style="zoom:67%;" />
+<img src="figures/mail.png" width="50%" />
+
 
 
 
