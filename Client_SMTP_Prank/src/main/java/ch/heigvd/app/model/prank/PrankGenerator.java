@@ -1,3 +1,7 @@
+/**
+ * Author : Maude Issolah, Matthieu Godi
+ * Date : 01.05.2021
+ */
 package ch.heigvd.app.model.prank;
 
 import ch.heigvd.app.config.IConfigurationManager;
@@ -15,10 +19,16 @@ public class PrankGenerator {
 
     private List<Prank> pranks;
 
+    private static final Logger LOG = Logger.getLogger(PrankGenerator.class.getName());
+
     public PrankGenerator(IConfigurationManager configurationManager){
         this.configurationManager = configurationManager;
     }
 
+    /**
+     * Generate messages for Pranks
+     * @return
+     */
     public List<Prank> generatePranks(){
         pranks = new ArrayList<>();
 
@@ -53,9 +63,14 @@ public class PrankGenerator {
         }
         return pranks;
     }
-    private static final Logger LOG = Logger.getLogger(PrankGenerator.class.getName());
 
-    public List<Group> generateGroups(List<Person> victims, int numberOfGroups){
+    /**
+     * Generate a Groups from a list of Person
+     * @param victims
+     * @param numberOfGroups
+     * @return
+     */
+    private List<Group> generateGroups(List<Person> victims, int numberOfGroups){
         List<Person> availableVictims = new ArrayList<>(victims);
         Collections.shuffle(availableVictims);
         List<Group> groups = new ArrayList<>();

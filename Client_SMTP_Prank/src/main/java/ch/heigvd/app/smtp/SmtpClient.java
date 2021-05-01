@@ -1,3 +1,7 @@
+/**
+ * Author : Maude Issolah, Matthieu Godi
+ * Date : 01.05.2021
+ */
 package ch.heigvd.app.smtp;
 
 import ch.heigvd.app.model.mail.Message;
@@ -26,7 +30,7 @@ public class SmtpClient implements ISmtpClient {
     @Override
     public void sendMessage(Message message) throws IOException {
         LOG.info("Sending message via SMTP");
-        Socket socket = new Socket(smtpServerAddress, smtpServerPort);
+        socket = new Socket(smtpServerAddress, smtpServerPort);
         writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
         reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
         String line = reader.readLine();

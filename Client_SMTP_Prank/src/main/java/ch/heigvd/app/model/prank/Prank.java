@@ -1,3 +1,7 @@
+/**
+ * Author : Maude Issolah, Matthieu Godi
+ * Date : 01.05.2021
+ */
 package ch.heigvd.app.model.prank;
 
 import ch.heigvd.app.model.mail.Message;
@@ -46,6 +50,10 @@ public class Prank {
         return new ArrayList<>(witnessRecipients);
     }
 
+    /**
+     * Generate a Message from string message
+     * @return
+     */
     public Message generateMailMessage(){
         msg = new Message();
 
