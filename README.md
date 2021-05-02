@@ -55,10 +55,6 @@ Comme expliqué dans la documentation de MockMock, l'application web est disponi
 
 
 
-  sudo docker run -it  -p 8282:8282 -p 25:25 mockmock /bin/bash
-
-<mark> TODO </mark>
-
 
 
 ## Utilisation
