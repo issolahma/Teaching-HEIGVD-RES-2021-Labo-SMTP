@@ -39,11 +39,10 @@ public class ConfigurationManager implements IConfigurationManager {
         String witnesses = properties.getProperty("witnessesToCC");
         if(!witnesses.contains("@"))
             throw new IOException("Error : Config.properties witnessesToCC Wrong Format");
-        String[] witnessesAddresses = witnesses.split(".");
+        String []witnessesAddresses = witnesses.split(",");
         for (String address : witnessesAddresses){
             this.witnessesToCC.add(new Person(address));
         }
-
     }
 
     private List<Person> loadAddressesFromFile(String filename) throws IOException {
