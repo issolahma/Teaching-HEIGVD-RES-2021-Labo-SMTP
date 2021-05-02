@@ -1,4 +1,4 @@
-# Teaching-HEIGVD-RES-2021-Labo-SMTP
+# Client_SMTP_Prank
 
 Client de "prank" SMTP développé dans le cadre du cour réseau (RES) 2021 de la HEIG-VD.
 
