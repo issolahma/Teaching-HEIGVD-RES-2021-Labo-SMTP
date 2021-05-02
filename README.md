@@ -59,6 +59,16 @@ Comme expliqué dans la documentation de MockMock, l'application web est disponi
 
 ## Utilisation
 
+### Fichiers de configurations
+
+Trois fichiers de configuration sont nécessaire à l'application. Ces trois fichiers doivent se trouver dans un dossier nommé `config` qui sera placé à côté du fichier `.jar`.
+
+- config.properties
+- messages.utf-8
+- victims.utf8
+
+
+
 ### Configuration de la connexion
 
 Fichier `config/config.properties`
@@ -73,8 +83,8 @@ smtpServerPort=25
 # Nombre de groupes de personnes à créer
 numberOfGroups=3
 
-# Le témoin du prank
-witnessesToCC=me@mail.com
+# Le/s témoin(s) du prank séparés par une virgule (Si un seul -> pas de virgule)
+witnessesToCC=me@mail.com,other@mail.com
 ````
 
 
@@ -121,7 +131,7 @@ Les commandes ci-dessous doivent être faites depuis le dossier `Client_SMTP_Pra
 # Construction du fichier jar
 mvn clean install
 
-# Lancement de l'application
+# Lancement de l'application (le dossier config doit se trouver au même endroit)
 java -jar target/client_smtp_prank-1.0-SNAPSHOT.jar
 ````
 
