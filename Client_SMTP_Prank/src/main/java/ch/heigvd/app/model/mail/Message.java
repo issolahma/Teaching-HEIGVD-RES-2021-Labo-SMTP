@@ -4,6 +4,9 @@
  */
 package ch.heigvd.app.model.mail;
 
+/**
+ * This class represent the structure of an email.
+ */
 public class Message {
     private String from, subject, body;
     private String[] to = new String[0];

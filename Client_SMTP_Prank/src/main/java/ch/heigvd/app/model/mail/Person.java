@@ -7,6 +7,9 @@ package ch.heigvd.app.model.mail;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Persons involved in the prank
+ */
 public class Person {
     private String firstname, lastname;
     private final String address;

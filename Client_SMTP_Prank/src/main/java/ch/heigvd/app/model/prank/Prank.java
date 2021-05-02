@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Create a prank
+ */
 public class Prank {
     private Person victimSender;
     private final List<Person> victimRecipients = new ArrayList<>();
@@ -51,8 +54,8 @@ public class Prank {
     }
 
     /**
-     * Generate a Message from the body
-     * @return
+     * Generate a object Message with the data of the prank
+     * @return the message created
      */
     public Message generateMailMessage(){
         msg = new Message();

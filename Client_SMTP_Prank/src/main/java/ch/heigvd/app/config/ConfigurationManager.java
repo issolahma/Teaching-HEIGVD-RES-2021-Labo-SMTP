@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * Class that manage configuration files, and extract data.
+ */
 public class ConfigurationManager implements IConfigurationManager {
     private String smtpServerAddress;
     private int smtpServerPort;
@@ -58,9 +61,9 @@ public class ConfigurationManager implements IConfigurationManager {
     }
 
     /**
-     * Load info from victims.utf8
+     * Load list of victims email from victims.utf8
      * @param filename
-     * @return
+     * @return List of Person
      * @throws IOException
      */
     private List<Person> loadAddressesFromFile(String filename) throws IOException {
@@ -82,9 +85,9 @@ public class ConfigurationManager implements IConfigurationManager {
     }
 
     /**
-     * Load info from messages.utf8
+     * Load prank messages from messages.utf8
      * @param filename
-     * @return
+     * @return List of messages
      * @throws IOException
      */
     private List<String> loadMessagesFromFile(String filename) throws IOException {

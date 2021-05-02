@@ -14,6 +14,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * Create groups of preson, and related prank.
+ */
 public class PrankGenerator {
     private IConfigurationManager configurationManager;
 
@@ -26,8 +29,8 @@ public class PrankGenerator {
     }
 
     /**
-     * Generate messages for Pranks
-     * @return
+     * Create groups of persons, and a prank per group.
+     * @return The list of pranks
      */
     public List<Prank> generatePranks(){
         pranks = new ArrayList<>();
@@ -66,9 +69,9 @@ public class PrankGenerator {
 
     /**
      * Generate a Groups from a list of Person
-     * @param victims
-     * @param numberOfGroups
-     * @return
+     * @param victims List of victims
+     * @param numberOfGroups Number of desired groups
+     * @return List of groups
      */
     private List<Group> generateGroups(List<Person> victims, int numberOfGroups){
         List<Person> availableVictims = new ArrayList<>(victims);

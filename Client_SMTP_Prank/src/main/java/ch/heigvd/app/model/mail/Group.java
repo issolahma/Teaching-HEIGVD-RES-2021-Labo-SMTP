@@ -7,6 +7,9 @@ package ch.heigvd.app.model.mail;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Group of person to prank.
+ */
 public class Group {
     private final List<Person> members = new ArrayList<>();
 
