@@ -1,10 +1,13 @@
+/**
+ * Author : Maude Issolah, Matthieu Godi
+ * Date : 01.05.2021
+ */
 package ch.heigvd.app.config;
 
 import ch.heigvd.app.model.mail.Person;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -16,12 +19,21 @@ public class ConfigurationManager implements IConfigurationManager {
     private int numberOfGroups;
     private List<Person> witnessesToCC;
 
+    /**
+     * Import config files
+     * @throws IOException
+     */
     public ConfigurationManager() throws IOException {
         victims = loadAddressesFromFile("./config/victims.utf8");
         messages = loadMessagesFromFile("./config/messages.utf8");
         loadProperties("./config/config.properties");
     }
 
+    /**
+     * Load info from config.properties
+     * @param filename
+     * @throws IOException
+     */
     private void loadProperties(String filename) throws IOException {
         BufferedInputStream fis = new BufferedInputStream(new FileInputStream(filename));
         Properties properties = new Properties();
@@ -45,6 +57,12 @@ public class ConfigurationManager implements IConfigurationManager {
         }
     }
 
+    /**
+     * Load info from victims.utf8
+     * @param filename
+     * @return
+     * @throws IOException
+     */
     private List<Person> loadAddressesFromFile(String filename) throws IOException {
         List<Person> result;
         try (BufferedInputStream fis = new BufferedInputStream(new FileInputStream(filename));){
@@ -63,6 +81,12 @@ public class ConfigurationManager implements IConfigurationManager {
         return result;
     }
 
+    /**
+     * Load info from messages.utf8
+     * @param filename
+     * @return
+     * @throws IOException
+     */
     private List<String> loadMessagesFromFile(String filename) throws IOException {
         List<String> result;
         try (BufferedInputStream fis = new BufferedInputStream(new FileInputStream(filename));){

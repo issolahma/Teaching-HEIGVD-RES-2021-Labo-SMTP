@@ -1,3 +1,7 @@
+/**
+ * Author : Maude Issolah, Matthieu Godi
+ * Date : 01.05.2021
+ */
 package ch.heigvd.app.model.mail;
 
 import java.util.regex.Matcher;
